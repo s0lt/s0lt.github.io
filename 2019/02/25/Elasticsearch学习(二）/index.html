@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Elasticsearch," />
 
 
 
@@ -81,18 +81,19 @@
 
 
 
-<meta name="description" content="使用API来创建、检索、更新和删除文档 ###文档文档可以理解为和对象（JSON键值对结构体，）类似。 文档元数据一个文档不只有数据。它还包含了元数据(metadata)——关于文档的信息。三个必须的元数据节点是：|节点| 说明 ||–|–|| _index |文档存储的地方，类似关系型数据库中的“数据库”，但索引是分片的逻辑存储空间，数据被存储和索引在分片中。索引名字必须是全部小写，不能以下划线">
+<meta name="description" content="使用API来创建、检索、更新和删除文档 ###文档文档可以理解为和对象（JSON键值对结构体，）类似。 文档元数据一个文档不只有数据。它还包含了元数据(metadata)——关于文档的信息。三个必须的元数据节点是：    节点 说明     _index 文档存储的地方，类似关系型数据库中的“数据库”，但索引是分片的逻辑存储空间，数据被存储和索引在分片中。索引名字必须是全部小写，不能以下划线开头，">
+<meta name="keywords" content="Elasticsearch">
 <meta property="og:type" content="article">
-<meta property="og:title" content="s0lt&#39;s Blog">
-<meta property="og:url" content="https://s0lt.github.io/2019/02/22/Elasticsearch学习(二）/index.html">
+<meta property="og:title" content="Elasticsearch学习（二）">
+<meta property="og:url" content="https://s0lt.github.io/2019/02/25/Elasticsearch学习(二）/index.html">
 <meta property="og:site_name" content="s0lt&#39;s Blog">
-<meta property="og:description" content="使用API来创建、检索、更新和删除文档 ###文档文档可以理解为和对象（JSON键值对结构体，）类似。 文档元数据一个文档不只有数据。它还包含了元数据(metadata)——关于文档的信息。三个必须的元数据节点是：|节点| 说明 ||–|–|| _index |文档存储的地方，类似关系型数据库中的“数据库”，但索引是分片的逻辑存储空间，数据被存储和索引在分片中。索引名字必须是全部小写，不能以下划线">
+<meta property="og:description" content="使用API来创建、检索、更新和删除文档 ###文档文档可以理解为和对象（JSON键值对结构体，）类似。 文档元数据一个文档不只有数据。它还包含了元数据(metadata)——关于文档的信息。三个必须的元数据节点是：    节点 说明     _index 文档存储的地方，类似关系型数据库中的“数据库”，但索引是分片的逻辑存储空间，数据被存储和索引在分片中。索引名字必须是全部小写，不能以下划线开头，">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://s0lt.github.io/images/_search.png">
-<meta property="og:updated_time" content="2019-02-28T00:50:51.800Z">
+<meta property="og:updated_time" content="2019-02-28T01:06:30.152Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="s0lt&#39;s Blog">
-<meta name="twitter:description" content="使用API来创建、检索、更新和删除文档 ###文档文档可以理解为和对象（JSON键值对结构体，）类似。 文档元数据一个文档不只有数据。它还包含了元数据(metadata)——关于文档的信息。三个必须的元数据节点是：|节点| 说明 ||–|–|| _index |文档存储的地方，类似关系型数据库中的“数据库”，但索引是分片的逻辑存储空间，数据被存储和索引在分片中。索引名字必须是全部小写，不能以下划线">
+<meta name="twitter:title" content="Elasticsearch学习（二）">
+<meta name="twitter:description" content="使用API来创建、检索、更新和删除文档 ###文档文档可以理解为和对象（JSON键值对结构体，）类似。 文档元数据一个文档不只有数据。它还包含了元数据(metadata)——关于文档的信息。三个必须的元数据节点是：    节点 说明     _index 文档存储的地方，类似关系型数据库中的“数据库”，但索引是分片的逻辑存储空间，数据被存储和索引在分片中。索引名字必须是全部小写，不能以下划线开头，">
 <meta name="twitter:image" content="https://s0lt.github.io/images/_search.png">
 
 
@@ -123,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://s0lt.github.io/2019/02/22/Elasticsearch学习(二）/"/>
+  <link rel="canonical" href="https://s0lt.github.io/2019/02/25/Elasticsearch学习(二）/"/>
 
 
 
 
 
-  <title> | s0lt's Blog</title>
+  <title>Elasticsearch学习（二） | s0lt's Blog</title>
   
 
 
@@ -266,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://s0lt.github.io/2019/02/22/Elasticsearch学习(二）/">
+    <link itemprop="mainEntityOfPage" href="https://s0lt.github.io/2019/02/25/Elasticsearch学习(二）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="s0lt">
@@ -283,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">Elasticsearch学习（二）</h1>
         
 
         <div class="post-meta">
@@ -295,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-22T17:37:31+08:00">
-                2019-02-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-25T07:50:24+08:00">
+                2019-02-25
               </time>
             
 
@@ -335,7 +336,38 @@
       
         <p>使用API来创建、检索、更新和删除文档</p>
 <p>###文档<br>文档可以理解为和对象（JSON键值对结构体，）类似。</p>
-<h4 id="文档元数据"><a href="#文档元数据" class="headerlink" title="文档元数据"></a>文档元数据</h4><p>一个文档不只有数据。它还包含了<strong>元数据(metadata)</strong>——<strong>关于</strong>文档的信息。三个必须的元数据节点是：<br>|节点| 说明 |<br>|–|–|<br>| _index |文档存储的地方，类似关系型数据库中的“数据库”，但索引是分片的逻辑存储空间，数据被存储和索引在分片中。索引名字必须是全部小写，不能以下划线开头，不能包含逗号 |<br>|_type|文档代表的对象的类，<code>_type</code>的名字可以是大写或小写，不能包含下划线或逗号|<br>|_id|文档的唯一标识|<br>|_version|文档版本号，每当文档变化（包括删除）都会使<code>_version</code>增加|<br>|_source|创建索引时发送的原始文档,GET /website/blog/123?_source=title,text  部分检索|<br>|</p>
+<h4 id="文档元数据"><a href="#文档元数据" class="headerlink" title="文档元数据"></a>文档元数据</h4><p>一个文档不只有数据。它还包含了<strong>元数据(metadata)</strong>——<strong>关于</strong>文档的信息。三个必须的元数据节点是：</p>
+<table>
+<thead>
+<tr>
+<th>节点</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>_index</td>
+<td>文档存储的地方，类似关系型数据库中的“数据库”，但索引是分片的逻辑存储空间，数据被存储和索引在分片中。索引名字必须是全部小写，不能以下划线开头，不能包含逗号</td>
+</tr>
+<tr>
+<td>_type</td>
+<td>文档代表的对象的类，<code>_type</code>的名字可以是大写或小写，不能包含下划线或逗号</td>
+</tr>
+<tr>
+<td>_id</td>
+<td>文档的唯一标识</td>
+</tr>
+<tr>
+<td>_version</td>
+<td>文档版本号，每当文档变化（包括删除）都会使<code>_version</code>增加</td>
+</tr>
+<tr>
+<td>_source</td>
+<td>创建索引时发送的原始文档,GET /website/blog/123?_source=title,text</td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
 <h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h4><p>自定义文档ID<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PUT /&#123;index&#125;/&#123;type&#125;/&#123;id&#125;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;field&quot;: &quot;value&quot;,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>设置自增ID，使用POST，只需要_index和_type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">POST /website/blog/</span><br><span class="line">&#123;</span><br><span class="line">  &quot;title&quot;: &quot;My second blog entry&quot;,</span><br><span class="line">  &quot;text&quot;:  &quot;Still trying this out...&quot;,</span><br><span class="line">  &quot;date&quot;:  &quot;2014/01/01&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h4 id="someAPI"><a href="#someAPI" class="headerlink" title="someAPI"></a>someAPI</h4><p>_update合并更新到文档中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST /website/blog/1/_update</span><br></pre></td></tr></table></figure></p>
@@ -360,6 +392,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Elasticsearch/" rel="tag"><i class="fa fa-tag"></i> Elasticsearch</a>
+          
+        </div>
+      
 
       
       
@@ -379,8 +417,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/02/27/powershell渗透中的学习/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/02/28/powershell渗透中的学习/" rel="prev" title="powershell渗透使用研究">
+                powershell渗透使用研究 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -476,7 +514,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
